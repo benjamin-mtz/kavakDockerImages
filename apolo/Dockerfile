@@ -1,6 +1,6 @@
 FROM node:lts-slim
 RUN apt-get update \
-    && apt-get install --no-install-recommends zip git  python-setuptools python python-pip curl -y \
+    && apt-get install --no-install-recommends gcc zip git python-dev python-setuptools python python-pip curl -y \
     && apt-get clean --dry-run \
     && rm -rf /var/lib/apt/lists/*
 
