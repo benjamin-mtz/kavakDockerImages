@@ -1,0 +1,8 @@
+version: '1'
+
+services:
+  angular-preview:
+    image: frontend
+    build: .
+    environment:
+      NODE_ENV: production
