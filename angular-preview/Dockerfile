@@ -1,9 +1,10 @@
 FROM node:lts-slim
-RUN apt update \
-    && aptt install --no-install-recommends zip git jq openssh-client curl -y \
-    && apt autoremove \
+RUN apt-get update \
+    && apt-get install --no-install-recommends zip git jq openssh-client curl -y \
+    && apt-get autoremove \
     && apt-get clean --dry-run \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get clean --dry-run \
+    && rm -rf /var/lib/apt-get/lists/*
 
 RUN npm install -g @angular/cli \
     && ng version
