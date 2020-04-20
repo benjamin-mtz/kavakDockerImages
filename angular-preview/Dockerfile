@@ -1,7 +1,7 @@
 FROM node:lts-slim
 RUN apt-get update \
     && apt-get install --no-install-recommends zip git jq openssh-client curl -y \
-    && apt-get autoremove \
+    && apt-get autoremove -y \
     && apt-get clean --dry-run \
     && apt-get clean --dry-run \
     && rm -rf /var/lib/apt-get/lists/*
