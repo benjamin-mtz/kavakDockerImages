@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   docker-apolo:
-    image: docker-apolo
+    image: angular-preview
     build: .
     environment:
       NODE_ENV: development
