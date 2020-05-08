@@ -3,6 +3,8 @@ RUN apt-get update \
     && apt-get install --no-install-recommends gcc zip git python-dev python-setuptools python python-pip curl -y \
     && apt-get clean --dry-run \
     && rm -rf /var/lib/apt/lists/*
+    
+RUN echo fs.inotify.max_user_watches=524288 |  tee -a /etc/sysctl.conf && sysctl -p
 
 RUN pip install --no-cache-dir pytz \
     && pip install --no-cache-dir awsebcli \
