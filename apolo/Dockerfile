@@ -4,7 +4,7 @@ RUN apt-get update \
     && apt-get clean --dry-run \
     && rm -rf /var/lib/apt/lists/*
     
-RUN echo fs.inotify.max_user_watches=524288 |  tee -a /etc/sysctl.conf && sysctl -p
+RUN echo fs.inotify.max_user_watches=524288 |  tee -a /etc/sysctl.conf
 
 RUN pip install --no-cache-dir pytz \
     && pip install --no-cache-dir awsebcli \
