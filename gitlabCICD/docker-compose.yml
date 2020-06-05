@@ -1,0 +1,8 @@
+version: '1'
+
+services:
+  gitlabCICD:
+    image: gitlabCICD
+    build: .
+    environment:
+      NODE_ENV: production
