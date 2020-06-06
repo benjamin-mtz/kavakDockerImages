@@ -2,8 +2,8 @@ FROM node:lts-slim
 
 #* setup shell 
 SHELL ["/bin/bash", "-c"]
+
 #* update and deps
- 
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
     gcc zip git curl apt-transport-https \
@@ -56,4 +56,4 @@ RUN source /root/.bashrc  \
     && node --version \
     && npm -v
 
-CMD ["/bin/bash"]
+CMD source /root/.bashrc && /bin/bash
