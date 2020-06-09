@@ -44,7 +44,7 @@ RUN apt-get clean --dry-run \
     rm -rf aws-elastic-beanstalk-cli-setup
 
 #* Update path && env to help logging
-ENV addPath=/root/.serverless/bin:root/.pyenv/versions/3.7.2/bin:root/.ebcli-virtual-env/executables
+ENV addPath=/root/.serverless/bin:/root/.pyenv/versions/3.7.2/bin:/root/.ebcli-virtual-env/executables
 ENV PATH=${addPath}:$PATH
 ENV SLS_DEBUG=*
 
