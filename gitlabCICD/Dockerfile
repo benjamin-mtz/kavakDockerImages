@@ -43,17 +43,22 @@ RUN apt-get clean --dry-run \
     rm -rf yarnInstall.sh \
     rm -rf aws-elastic-beanstalk-cli-setup
 
+#* Update path && env to help logging
+ENV addPath=/root/.serverless/bin:root/.pyenv/versions/3.7.2/bin:root/.ebcli-virtual-env/executables
+ENV PATH=${addPath}:$PATH
+ENV SLS_DEBUG=*
 
 #* Checking installed versions
-RUN source /root/.bashrc  \
-    && aws --version \
-    && serverless -version \
-    && docker --version \
-    && eb --version \
-    && ecs-cli --version \
-    && yarn -v \
-    && ng v \
-    && node --version \
-    && npm -v
+#* this is commented as is only needed
+#* to print out installed versions
+# RUN aws --version \
+#     && serverless -version \
+#     && docker --version \
+#     && eb --version \
+#     && ecs-cli --version \
+#     && yarn -v \
+#     && ng v \
+#     && node --version \
+#     && npm -v
 
-CMD source /root/.bashrc && /bin/bash
+CMD /bin/bash
