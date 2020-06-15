@@ -15,7 +15,8 @@ RUN apt-get update \
 #* installing docker, serverless, awscli, eb-cli, ecs-cli, yarn, angular
 RUN curl -fsSL https://get.docker.com -o get-docker.sh \
     && bash get-docker.sh \
-    && apt-get install -y docker-ce-cli containerd.io \
+    && curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose \
+    && chmod +x /usr/local/bin/docker-compose \
     && curl -o- -L https://slss.io/install > serverless.sh \
     && bash serverless.sh \
     && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
@@ -29,7 +30,7 @@ RUN curl -fsSL https://get.docker.com -o get-docker.sh \
     && chmod +x /usr/local/bin/ecs-cli \
     && curl -o- -L https://yarnpkg.com/install.sh > yarnInstall.sh \
     && bash yarnInstall.sh \
-    && npm install -g @angular/cli 
+    && npm install -g @angular/cli @nrwl/cli
 
 #* CleanUp
 RUN apt-get clean --dry-run \
@@ -59,6 +60,8 @@ ENV SLS_DEBUG=*
 #     && yarn -v \
 #     && ng v \
 #     && node --version \
-#     && npm -v
+#     && npm -v \
+#     && docker-compose --version \
+#     && nx 
 
 CMD /bin/bash
