@@ -3,7 +3,18 @@
 This image contains:
 
 ```bash
+## Debian Version
+Distributor ID: Debian
+Description:    Debian GNU/Linux 9.12 (stretch)
+Release:        9.12
+Codename:       stretch
+
+## git version
+
+git version 2.20.1
+
 ## aws cli
+
 aws-cli/2.0.19 Python/3.7.3 botocore/2.0.0dev23
 
 ## Serverless cli
@@ -14,6 +25,10 @@ Components: 2.30.12
 
 ## Docker-ce
 Docker version 19.03.11, build 42e35e61f3
+
+## Docker-compose
+
+docker-compose version 1.21.2, build a133471
 
 ## Elastic BeanStalk cli
 EB CLI 3.18.1 (Python 3.7.2)

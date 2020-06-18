@@ -4,9 +4,11 @@ FROM node:lts-slim
 SHELL ["/bin/bash", "-c"]
 
 #* update and deps
-RUN apt-get update \
+RUN echo "deb http://ftp.debian.org/debian stretch-backports main" | tee /etc/apt/sources.list.d/backports.list \
+    && apt-get update \
+    && apt-get install --no-install-recommends -y -t stretch-backports git \
     && apt-get install --no-install-recommends -y \
-    gcc zip git curl apt-transport-https \
+    gcc zip curl apt-transport-https \
     ca-certificates gnupg-agent software-properties-common \
     lsb-release gnupg unzip jq openssh-server apt-utils\
     build-essential zlib1g-dev libssl-dev libncurses-dev \
@@ -52,16 +54,19 @@ ENV SLS_DEBUG=*
 #* Checking installed versions
 #* this is commented as is only needed
 #* to print out installed versions
-# RUN aws --version \
-#     && serverless -version \
-#     && docker --version \
-#     && eb --version \
-#     && ecs-cli --version \
-#     && yarn -v \
-#     && ng v \
-#     && node --version \
-#     && npm -v \
-#     && docker-compose --version \
-#     && nx 
+RUN aws --version \
+    && serverless -version \
+    && docker --version \
+    && eb --version \
+    && ecs-cli --version \
+    && yarn -v \
+    && ng v \
+    && node --version \
+    && npm -v \
+    && docker-compose --version \
+    && nx \
+    && lsb_release -a \
+    && git --version \
+    && docker-compose -v
 
 CMD /bin/bash
