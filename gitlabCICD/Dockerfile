@@ -3,6 +3,10 @@ FROM node:lts-slim
 #* setup shell 
 SHELL ["/bin/bash", "-c"]
 
+# Hack required by postgresql
+
+RUN for i in {1..8}; do mkdir -p "/usr/share/man/man$i"; done
+
 #* update and deps
 RUN echo "deb http://ftp.debian.org/debian stretch-backports main" | tee /etc/apt/sources.list.d/backports.list \
     && apt-get update \
@@ -12,7 +16,8 @@ RUN echo "deb http://ftp.debian.org/debian stretch-backports main" | tee /etc/ap
     ca-certificates gnupg-agent software-properties-common \
     lsb-release gnupg unzip jq openssh-server apt-utils\
     build-essential zlib1g-dev libssl-dev libncurses-dev \
-    libffi-dev libsqlite3-dev libreadline-dev libbz2-dev
+    libffi-dev libsqlite3-dev libreadline-dev libbz2-dev \
+    postgresql-client
 
 #* installing docker, serverless, awscli, eb-cli, ecs-cli, yarn, angular
 RUN curl -fsSL https://get.docker.com -o get-docker.sh \
@@ -35,6 +40,8 @@ RUN curl -fsSL https://get.docker.com -o get-docker.sh \
     && npm install -g @angular/cli @nrwl/cli
 
 #* CleanUp
+RUN for i in {1..8}; do rm -rf "/usr/share/man/man$i"; done
+
 RUN apt-get clean --dry-run \
     && apt-get autoclean -y \
     && apt-get autoremove -y  \
