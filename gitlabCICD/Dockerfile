@@ -61,19 +61,19 @@ ENV SLS_DEBUG=*
 #* Checking installed versions
 #* this is commented as is only needed
 #* to print out installed versions
-RUN aws --version \
-    && serverless -version \
-    && docker --version \
-    && eb --version \
-    && ecs-cli --version \
-    && yarn -v \
-    && ng v \
-    && node --version \
-    && npm -v \
-    && docker-compose --version \
-    && nx \
-    && lsb_release -a \
-    && git --version \
-    && docker-compose -v
+# RUN aws --version \
+#     && serverless -version \
+#     && docker --version \
+#     && eb --version \
+#     && ecs-cli --version \
+#     && yarn -v \
+#     && ng v \
+#     && node --version \
+#     && npm -v \
+#     && docker-compose --version \
+#     && nx \
+#     && lsb_release -a \
+#     && git --version \
+#     && docker-compose -v
 
 CMD /bin/bash
