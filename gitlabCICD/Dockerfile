@@ -37,7 +37,7 @@ RUN curl -fsSL https://get.docker.com -o get-docker.sh \
     && chmod +x /usr/local/bin/ecs-cli \
     && curl -o- -L https://yarnpkg.com/install.sh > yarnInstall.sh \
     && bash yarnInstall.sh \
-    && npm install -g @angular/cli @nrwl/cli
+    && npm install -g @angular/cli @nrwl/cli apollo
 
 #* CleanUp
 RUN for i in {1..8}; do rm -rf "/usr/share/man/man$i"; done
